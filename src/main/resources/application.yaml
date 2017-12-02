@@ -1,0 +1,12 @@
+sparkAppsToMonitor:
+  version: 10.2
+  apps :
+     - name: app1
+       resources:
+          - resource: app1.jar
+          - resource: app11.jar
+     - name: app2
+       resources:
+        - resource: app2.jar
+        - resource: app22.jar
+
