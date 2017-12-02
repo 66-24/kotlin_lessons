@@ -1,10 +1,11 @@
 package basics
 
 import org.apache.commons.lang3.StringUtils
+import org.intellij.lang.annotations.Language
 
 fun main(args: Array<String>) {
-    val streetNumber: Int = 10
-    val streetName: String = "Magic Street"
+    val streetNumber = 10
+    val streetName = "Magic Street"
 
     println("I live at $streetNumber, $streetName")
 
@@ -19,7 +20,7 @@ fun main(args: Array<String>) {
     checkName(null)
     checkName("Tom")
 
-    var someValue : String? = null
+    val someValue : String? = null
 
     val nameChecker : String? =    when (someValue) {
         null -> "NPE"
@@ -29,16 +30,12 @@ fun main(args: Array<String>) {
     }
 
     println(nameChecker)
-    someValue = "Phew!" //nameChecker bound to older "some value"
 
-    println(nameChecker)
-
-//    @Language("RegExp")
-    val emailPattern=Regex("^([0-9A-Za-z]+)@gmail.com$")
+    @Language("RegExp")
+    val emailPattern=Regex(pattern = "^([0-9A-Za-z]+)@gmail.com$")
 
     println(emailPattern.find("abc123@gmail.com")?.groupValues?.get(1))
 
-    val jsonString="{\"name\" : \"$someValue\"}"
 }
 
 fun checkName(name: String?) {

@@ -25,23 +25,23 @@ class XmlToMapConverter() {
         val xml = xmlPath.toFile().readText(charset("UTF-8"))
         val xmlToJson = XML.toJSONObject(xml)
         val json = xmlToJson.toString()
+        //TODO use profile in configuration
         val processor = Processor(InputStreamResource(ByteArrayInputStream(json.toByteArray())), null)
-        val config = processor.process()
 
-        return config
+        return processor.process()
     }
 
     private class Processor internal constructor(resource: Resource, profile: String?) : YamlProcessor() {
         init {
             if (profile == null) {
                 this.setMatchDefault(true)
-                this.setDocumentMatchers(*arrayOf<DocumentMatcher>(SpringProfileDocumentMatcher()))
+                this.setDocumentMatchers(SpringProfileDocumentMatcher())
             } else {
                 this.setMatchDefault(false)
-                this.setDocumentMatchers(*arrayOf<DocumentMatcher>(SpringProfileDocumentMatcher(*arrayOf(profile))))
+                this.setDocumentMatchers(SpringProfileDocumentMatcher(profile))
             }
 
-            this.setResources(*arrayOf(resource))
+            this.setResources(resource)
         }
 
         override fun createYaml(): Yaml {
@@ -56,7 +56,7 @@ class XmlToMapConverter() {
 
         fun process(): Map<String, Any> {
             val result = LinkedHashMap<String, Any>()
-            this.process { properties, map -> result.putAll(this@Processor.getFlattenedMap(map)) }
+            this.process { _, map -> result.putAll(this@Processor.getFlattenedMap(map)) }
             return result
         }
     }

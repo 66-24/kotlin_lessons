@@ -2,13 +2,13 @@ package basics
 
 import org.junit.Test
 
-class SparkAppsToMonitorTest {
+class SparkAppsToMonitorConfigurationTest {
     @Test
     fun test() {
-        val sparkAppsToMonitor = SparkAppsToMonitor()
+        val sparkAppsToMonitor = SparkAppsToMonitorConfiguration()
         sparkAppsToMonitor.sparkAppLaunchConfiguration = ArrayList()
 
-        val sparkAppsToMonitor1 = SparkAppsToMonitor()
+        val sparkAppsToMonitor1 = SparkAppsToMonitorConfiguration()
         sparkAppsToMonitor1.sparkAppLaunchConfiguration
     }
 }

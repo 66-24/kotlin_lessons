@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement
 @XmlRootElement
 open class SparkMonitorConfiguration {
     @XmlElement
-    @Valid
+    @Valid @NotEmpty
     val sparkJob: MutableList<@NotNull SparkJob> = mutableListOf()
 
     override fun toString(): String {

@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
-<sparkAppsToMonitor>
+<sparkAppsMonitorConfiguration>
     <version>10.2</version>
     <sparkAppLaunchConfiguration>
         <name>app1</name>
         <resource>app1.jar</resource>
-        <resource>app11.jar</resource>
     </sparkAppLaunchConfiguration>
     <sparkAppLaunchConfiguration>
         <name>app2</name>
         <resource>app2.jar</resource>
         <resource>app22.jar</resource>
     </sparkAppLaunchConfiguration>
-</sparkAppsToMonitor>
+    <monitoringFrequencySeconds>1</monitoringFrequencySeconds>
+</sparkAppsMonitorConfiguration>

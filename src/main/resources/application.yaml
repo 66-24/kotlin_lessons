@@ -1,4 +1,4 @@
-sparkAppsToMonitor:
+sparkAppsToMonitorConfiguration:
   version: 10.2
   apps :
      - name: app1

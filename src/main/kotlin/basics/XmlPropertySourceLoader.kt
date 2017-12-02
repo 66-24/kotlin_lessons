@@ -14,6 +14,9 @@ class XmlPropertySourceLoader(val app: SpringApplication, val args: Array<String
 
     override fun environmentPrepared(env: ConfigurableEnvironment?) {
         val xmlPath = Paths.get(env?.getProperty("configurationUrl"))
+        if(! xmlPath.toFile().isFile) {
+            throw InvalidConfigurationException("${xmlPath.toAbsolutePath().fileName} is not a file")
+        }
         val configAsMap = XmlToMapConverter().toMap(xmlPath)
         val mapPropertySource = MapPropertySource("${xmlPath.fileName}", configAsMap)
         env?.propertySources?.addLast(mapPropertySource)
