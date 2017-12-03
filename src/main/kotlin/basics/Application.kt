@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.scheduling.annotation.EnableScheduling
-import java.time.Duration
 
 
 @SpringBootApplication
@@ -50,6 +50,8 @@ open class Application(val config: SparkAppsToMonitorConfiguration,
 }
 
 fun main(args: Array<String>) {
-    SpringApplication.run(Application::class.java, *args)
-    Thread.currentThread().join(Duration.ofSeconds(10).toMillis())
+    SpringApplicationBuilder()
+            .addCommandLineProperties(true)
+            .sources(Application::class.java)
+            .run(*args)
 }

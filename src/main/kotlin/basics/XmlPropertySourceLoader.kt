@@ -19,8 +19,8 @@ class XmlPropertySourceLoader(val app: SpringApplication, val args: Array<String
         }
         val configAsMap = XmlToMapConverter().toMap(xmlPath)
         val mapPropertySource = MapPropertySource("${xmlPath.fileName}", configAsMap)
+        println("Loaded Xml configuration: ${xmlPath.toAbsolutePath()}")
         env?.propertySources?.addLast(mapPropertySource)
-        println("Loaded Xml configuration: ${xmlPath.fileName}")
         println(configAsMap)
     }
 
